@@ -85,6 +85,10 @@ class TailPrinterTest {
         assertEquals(expected, outContent.toString());
     }
 
+/*
+
+    // Use the code in the Main function to generate large_sample.txt and extra_large_sample.txt
+
     @Test
     void printLast5LinesOfLargeFile() {
         StringWriter expectedStringWriter = new StringWriter();
@@ -124,6 +128,7 @@ class TailPrinterTest {
 
         assertEquals(expected, outContent.toString());
     }
+*/
 
     private Path getPath(String filename){
         try {
