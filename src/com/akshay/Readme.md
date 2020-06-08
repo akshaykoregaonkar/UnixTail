@@ -17,4 +17,4 @@ lines of the file
 
 ##### Test results:
 
-![test results](src/com/akshay/resources/image-20200608102852637.png)
+![test-results] https://github.com/akshaykoregaonkar/UnixTail/blob/master/src/com/akshay/resources/image-20200608102852637.png?raw=true
