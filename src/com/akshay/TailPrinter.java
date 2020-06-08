@@ -1,29 +1,27 @@
 package com.akshay;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
 public class TailPrinter {
     private int position = 0;
     private final int n;
-    private final String[] lines;
-    private final Path path;
+    private String[] lines;
+    private final List<Path> paths;
 
-    public TailPrinter(Path path) {
-        this.path = path;
+    public TailPrinter(List<Path> paths) {
+        this.paths = paths;
         this.n = 10;
-        this.lines = new String[n];
     }
 
-    public TailPrinter(Path path, int n) {
-        this.path = path;
+    public TailPrinter(List<Path> paths, int n) {
+        this.paths = paths;
         this.n = n;
-        this.lines = new String[n];
     }
 
     private void getTailLines(String line) {
@@ -31,7 +29,16 @@ public class TailPrinter {
         position++;
     }
 
-    public void printTail()  {
+    public void printTail() {
+        paths.forEach(this::printCurrentTail);
+    }
+
+    private void printCurrentTail(Path path) {
+        lines = new String[n];
+        position = 0;
+        if (paths.size() > 1)
+            System.out.println(path.getFileName() +" :");
+
         // Files.lines requires a try-with-resources to ensures resource is closed after a terminal stream operation
         try (Stream<String> stream = Files.lines(path)) {
             stream.forEach(line -> getTailLines(line));
