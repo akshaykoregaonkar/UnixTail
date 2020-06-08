@@ -11,8 +11,7 @@ We can even open multiple files using tail command without the need to execute m
 **Key problems**
 
 - Need a fast way to read large files
-- Need a data structure that stores the last N lines of a file (probably just a string array) which should be recycled to store the last
-lines of the file
+- Need a data structure that reads through a file and only stores the last N lines (can just use string array) 
 - Should handle multiple files 
 
 ##### Test results:
