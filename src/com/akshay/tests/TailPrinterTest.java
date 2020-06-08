@@ -20,20 +20,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class TailPrinterTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-    private final PrintStream originalErr = System.err;
 
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
     }
 
     @AfterEach
     void tearDown() {
         System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @DisplayName("If file size exeeds N, then print all lines from file")
