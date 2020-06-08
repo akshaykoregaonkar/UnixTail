@@ -91,7 +91,7 @@ class TailPrinterTest {
     }
 
     // Use the code in the Main function to generate large_sample.txt and extra_large_sample.txt
-
+/*
     @DisplayName("Print a large file (~12 MB) with an N of 5")
     @Test
     void printLast5LinesOfLargeFile() {
@@ -133,7 +133,8 @@ class TailPrinterTest {
 
         assertEquals(expected, outContent.toString());
     }
-
+*/
+    
     @DisplayName("Print multiple files with a default N of 10")
     @Test
     void printMultipleFilesWithDefaultSetting() {
