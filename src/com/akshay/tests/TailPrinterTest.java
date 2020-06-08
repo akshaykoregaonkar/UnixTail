@@ -86,6 +86,28 @@ class TailPrinterTest {
         assertEquals(expected, outContent.toString());
     }
 
+    @DisplayName("Print a small file with an N of 6")
+    @Test
+    void printLastSixLinesOfASmallFile() {
+        StringWriter expectedStringWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(expectedStringWriter);
+
+        printWriter.println("line 15");
+        printWriter.println("line 16");
+        printWriter.println("line 17");
+        printWriter.println("line 18");
+        printWriter.println("line 19");
+        printWriter.println("line 20");
+        printWriter.close();
+
+        String expected = expectedStringWriter.toString();
+
+        TailPrinter tailPrinter = new TailPrinter(Arrays.asList(getPath("small_sample.txt")), 6);
+        tailPrinter.printTail();
+
+        assertEquals(expected, outContent.toString());
+    }
+
     // Use the code in the Main function to generate large_sample.txt and extra_large_sample.txt
 /*
     @DisplayName("Print a large file (~12 MB) with an N of 5")

@@ -25,8 +25,19 @@ public class TailPrinter {
     }
 
     private void getTailLines(String line) {
-        lines[position % n] = line;
-        position++;
+        lines[position++] = line;
+        if (position == n)
+            position = 0;
+    }
+
+    private void rotateTail(int k) {
+        String[] tempLines = new String[n];
+        for (int i = 0; i < lines.length; i++) {
+            tempLines[(i + k) % n] = lines[i];
+        }
+        for (int i = 0; i < lines.length; i++) {
+            lines[i] = tempLines[i];
+        }
     }
 
     public void printTail() {
@@ -42,6 +53,10 @@ public class TailPrinter {
         // Files.lines requires a try-with-resources to ensures resource is closed after a terminal stream operation
         try (Stream<String> stream = Files.lines(path)) {
             stream.forEach(line -> getTailLines(line));
+
+            if (position != n)
+                rotateTail(n - position);
+
             Arrays.asList(lines)
                     .stream()
                     .filter(Objects::nonNull)
